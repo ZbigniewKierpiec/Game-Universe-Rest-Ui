@@ -1,0 +1,22 @@
+.box {
+  width: 100%;
+}
+h1 {
+  text-transform: uppercase;
+  font-family: monospace;
+  text-align: center;
+  margin: 5rem 0;
+}
+img {
+  width: 350px;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 0.4rem;
+  display: block;
+}
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+}

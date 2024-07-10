@@ -1,0 +1,110 @@
+<div class="card">
+  <div *ngIf="editableGame" class="card-body">
+    <h2 class="card-title text-center">{{ editableGame?.name }}</h2>
+    <form #form="ngForm" (ngSubmit)="onUpdate()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          value="{{ editableGame?.name }}"
+          [(ngModel)]="editableGame!.name"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="type">Type</label>
+        <input
+          type="text"
+          class="form-control"
+          id="type"
+          name="type"
+          value="{{ editableGame?.type }}"
+          [(ngModel)]="editableGame!.type"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="platform">Platform</label>
+        <input
+          type="text"
+          class="form-control"
+          id="platform"
+          name="platform"
+          value="{{ editableGame?.platform }}"
+          [(ngModel)]="editableGame!.platform"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="rating">Rating</label>
+        <input
+          type="number"
+          class="form-control"
+          id="rating"
+          name="rating"
+          value="{{ editableGame?.rating }}"
+          [(ngModel)]="editableGame!.rating"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="age">Age Rating</label>
+        <input
+          type="number"
+          class="form-control"
+          id="age"
+          name="age"
+          value="{{ editableGame?.age }}"
+          [(ngModel)]="editableGame!.age"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input
+          type="number"
+          class="form-control"
+          id="price"
+          name="price"
+          value="{{ editableGame?.price }}"
+          [(ngModel)]="editableGame!.price"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          class="form-control"
+          id="description"
+          name="description"
+          value="{{ editableGame?.description }}"
+          [(ngModel)]="editableGame!.description"
+          required
+        ></textarea>
+      </div>
+      <div class="form-group text-center">
+        <label for="label">Image URL</label>
+        <input
+          type="text"
+          class="form-control"
+          id="label"
+          name="label"
+          value="{{ editableGame?.label }}"
+          [(ngModel)]="editableGame!.label"
+          required
+        />
+        <img
+          [src]="editableGame?.label"
+          alt="Game Image"
+          class="img-fluid mt-2"
+        />
+        <button type="submit" class="btn btn-primary btn-block">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+.box{
+  position: fixed;
+  right: 4rem;
+  top: 90vh;
+
+  border-radius: .3rem;
+  background-color: black;
+  cursor: pointer;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  &.active{
+  pointer-events: all;
+  visibility:visible;
+  opacity: 1;
+  }
+}
+
+
+.chevronWrapper {
+  position: fixed;
+  right: 4rem;
+  width: 28px;
+  height: 62px;
+
+  transform: rotate(180deg);
+}
+
+.chevronWrapper .chevron {
+  position: absolute;
+  width: 28px;
+  height: 8px;
+  opacity: 0;
+  transform: scale3d(0.5, 0.5, 0.5);
+  animation: move 3s ease-out infinite;
+}
+
+.chevronWrapper .chevron:first-child {
+  animation: move 3s ease-out 1s infinite;
+}
+
+.chevronWrapper .chevron:nth-child(2) {
+  animation: move 3s ease-out 2s infinite;
+}
+
+.chevronWrapper .chevron::before,
+.chevronWrapper .chevron::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 51%;
+  background: #000;
+}
+
+.chevronWrapper .chevron::before {
+  left: 0;
+  transform: skew(0deg, 30deg);
+}
+
+.chevronWrapper .chevron::after {
+  right: 0;
+  width: 50%;
+  transform: skew(0deg, -30deg);
+}
+
+@keyframes move {
+  25% { opacity: 1; }
+  33% {
+    opacity: 1;
+    transform: translateY(30px);
+  }
+  67% { transform: translateY(40px); }
+  100% {
+    opacity: 0;
+    transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+  }
+}

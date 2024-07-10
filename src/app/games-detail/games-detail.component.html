@@ -1,0 +1,30 @@
+<div class="container mt-4">
+
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title text-center">{{ game?.name }}</h2>
+          <p class="card-text">Type: {{ game?.type }}</p>
+          <p class="card-text">Platform: {{ game?.platform }}</p>
+          <p class="card-text">Rating: {{ game?.rating }}</p>
+          <p class="card-text">Age Rating: {{ game?.age }}</p>
+          <p class="card-text">Price: £{{ game?.price }}</p>
+          <p class="card-text">Description: {{ game?.description }}</p>
+          <div class="text-center">
+            <img
+              [src]="game?.label"
+              class="img-fluid mb-3"
+              style="max-width: 400px"
+              alt="Game Image"
+            />
+           
+          </div>
+          <div class="del">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

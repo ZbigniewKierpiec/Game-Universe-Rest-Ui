@@ -1,0 +1,89 @@
+<div
+  [classList]="true ? 'container animate__animated animate__fadeIn ' : ''"
+  class="container mt-5"
+>
+  <h2 class="mb-4">Add Game</h2>
+  <form #form="ngForm" (ngSubmit)="addNewGame()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        [(ngModel)]="model.Name"
+        name="name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="type">Type</label>
+      <input
+        type="text"
+        class="form-control"
+        id="type"
+        [(ngModel)]="model.Type"
+        name="type"
+      />
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        class="form-control"
+        id="description"
+        rows="3"
+        [(ngModel)]="model.Description"
+        name="description"
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="rating">Rating</label>
+      <input
+        type="number"
+        class="form-control"
+        id="rating"
+        [(ngModel)]="model.Rating"
+        name="rating"
+      />
+    </div>
+    <div class="form-group">
+      <label for="platform">Platform</label>
+      <input
+        type="text"
+        class="form-control"
+        id="platform"
+        [(ngModel)]="model.Platform"
+        name="platform"
+      />
+    </div>
+    <div class="form-group">
+      <label for="age">Age</label>
+      <input
+        type="number"
+        class="form-control"
+        id="age"
+        [(ngModel)]="model.Age"
+        name="age"
+      />
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input
+        type="number"
+        class="form-control"
+        id="price"
+        [(ngModel)]="model.Price"
+        name="price"
+      />
+    </div>
+    <div class="form-group">
+      <label for="label">Label</label>
+      <input
+        type="text"
+        class="form-control"
+        id="label"
+        [(ngModel)]="model.Label"
+        name="label"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+  </form>
+</div>

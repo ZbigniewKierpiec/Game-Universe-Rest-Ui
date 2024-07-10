@@ -1,0 +1,102 @@
+<nav
+  id="navbar"
+  [ngClass]="{ sticky: isSticky }"
+  class="navbar navbar-expand-lg navbar-light bg-light"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="'home'">
+      <img
+        src="https://image.similarpng.com/very-thumbnail/2021/07/Gaming-logo-template-on-transparent-background-PNG.png"
+        alt="Logo"
+        height="40"
+      />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="'/home'"
+            routerLinkActive="active"
+            aria-current="page"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="'/view/game'"
+            routerLinkActive="active"
+            aria-current="page"
+            >View Games</a
+          >
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/add/game'" routerLinkActive="active">Add Game</a>
+        </li> -->
+        <ng-container
+          *ngIf="user != undefined && user?.roles?.includes('Writer')"
+        >
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Admin
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a
+                  class="dropdown-item"
+                  [routerLink]="['admin/game/list']"
+                  routerLinkActive="router-link-active"
+                  routerLinkActive="active"
+                  >Game List</a
+                >
+              </li>
+
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  [routerLink]="['admin/game/add']"
+                  routerLinkActive="router-link-active"
+                  routerLinkActive="active"
+                  >Add Game</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+
+    <div class="d-flex">
+      <ng-container *ngIf="user === undefined; else showLogout">
+        <a class="btn btn-primary" [routerLink]="['/login']">login</a>
+      </ng-container>
+
+      <ng-template #showLogout>
+        <div class="flex align-items-center">
+          <span>{{ user?.email }}</span>
+          <button class="btn btn-primary ms-3" (click)="onLogout()">
+            Logout
+          </button>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</nav>

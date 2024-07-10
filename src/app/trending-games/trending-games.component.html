@@ -1,0 +1,26 @@
+<div
+  [classList]="true ? 'box animate__animated animate__fadeIn ' : ''"
+  class="box"
+>
+  <h1>trending games</h1>
+  <swiper-container
+    containerModifierClass="zee"
+    autoplay="true"
+    centeredSlide="true"
+    style="margin-top: 3rem; margin-bottom: 3rem; display: flex; height: 450px"
+    loop="true"
+    navigation="false"
+    slides-per-view="4"
+    speed="1500"
+    pagination="false"
+  >
+    <ng-container *ngFor="let item of games">
+      <swiper-slide
+        style="display: flex; justify-content: center; align-items: center"
+        lazy="true"
+      >
+        <img src="{{ item.label }}" loading="lazy" alt="" />
+      </swiper-slide>
+    </ng-container>
+  </swiper-container>
+</div>

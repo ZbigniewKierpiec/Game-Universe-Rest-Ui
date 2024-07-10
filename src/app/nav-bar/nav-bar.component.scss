@@ -1,0 +1,44 @@
+nav{
+
+}
+
+
+.navbar-brand img {
+  height: 50px;
+
+}
+
+.navbar-nav .nav-link {
+  color: #333; /* Example: Default link color */
+}
+
+.navbar-nav .nav-link.active {
+  color: #007bff; /* Example: Active link color */
+}
+
+
+
+nav {
+  width: 100%;
+  background-color: #333;
+  z-index: 1000;
+  transition: top 0.5s ease-in-out;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  animation: fadeInDown 0.5s forwards;
+}
+
+
+@keyframes fadeInDown {
+  from {
+      opacity: 0;
+      transform: translateY(-50px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}

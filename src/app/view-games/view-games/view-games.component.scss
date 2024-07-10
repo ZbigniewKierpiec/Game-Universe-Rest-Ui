@@ -1,0 +1,28 @@
+.box {
+  width: 80%;
+
+  margin: 0 auto;
+}
+.table-container {
+  margin-top: 20px;
+  margin: 5rem 0;
+}
+.game-img {
+  width: 80px;
+  height: 100px;
+
+  object-fit: cover;
+  border-radius: 0.3rem;
+  transition: 0.3s linear;
+}
+
+tbody:hover {
+  background-color: whitesmoke;
+}
+tbody:hover img {
+  transform: scale(1.2);
+  transform-box: border-box;
+}
+tr {
+  cursor: pointer;
+}
