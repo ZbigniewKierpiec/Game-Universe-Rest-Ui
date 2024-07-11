@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AddGameRequest } from '../models/add-game-request.model';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Games } from '../models/games.model';
 import { environment } from '../../environments/environment';
@@ -27,16 +27,14 @@ export class GameService {
     );
   }
 
-  getAllGames(): Observable<Games[]> {
-    return this.http.get<Games[]>(
-      `${environment.apiBaseUrl}/api/Games`,
-
-      {
-        headers: {
-          Authorization: this.cookieService.get('Authorization'),
-        },
-      }
-    );
+  getAllGames(query?: string): Observable<Games[]> {
+    let params = new HttpParams();
+    if (query) {
+      params = params.set('query', query);
+    }
+    return this.http.get<Games[]>(`${environment.apiBaseUrl}/api/Games`, {
+      params: params,
+    });
   }
 
   getGameById(id: string): Observable<Games> {
@@ -60,6 +58,14 @@ export class GameService {
   }
 
   deleteGame(id: string): Observable<Games> {
-    return this.http.delete<Games>(`${environment.apiBaseUrl}/api/Games/${id}`);
+    return this.http.delete<Games>(
+      `${environment.apiBaseUrl}/api/Games/${id}`,
+
+      {
+        headers: {
+          Authorization: this.cookieService.get('Authorization'),
+        },
+      }
+    );
   }
 }

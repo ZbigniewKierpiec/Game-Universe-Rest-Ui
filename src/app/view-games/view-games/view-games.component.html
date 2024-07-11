@@ -8,7 +8,10 @@
     <h2 class="text-center mb-4">
       Top <span>{{ games?.length }}</span> Games
     </h2>
-
+   <div class="search">
+    <input class="form-control me-3" #queryText type="text">
+    <button type="button" (click)="onSearch(queryText.value)" class="btn btn-warning">Search</button>
+   </div>
     <div class="table-responsive s">
       <table class="table table-striped table-bordered table-hover">
         <thead class="thead-dark">

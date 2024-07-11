@@ -13,7 +13,7 @@ import { Games } from '../../models/games.model';
   templateUrl: './view-games.component.html',
   styleUrl: './view-games.component.scss',
 })
-export class ViewGamesComponent implements OnInit , OnDestroy {
+export class ViewGamesComponent implements OnInit, OnDestroy {
   private viewGamesSubscription?: Subscription;
   games?: Games[];
   error: any;
@@ -29,23 +29,30 @@ export class ViewGamesComponent implements OnInit , OnDestroy {
     this.router.navigate(['/game-details', gameId]);
   }
 
+  onSearch(query: string) {
+    // Subscribe to the Observable returned by getAllGames(query)
+    this.gameservice.getAllGames(query).subscribe(
+      (games: Games[]) => {
+        // Assign the received games array to this.games
+        this.games = games;
+      },
+      (error) => {
+        // Handle error if needed
+        console.error('Error fetching games:', error);
+      }
+    );
+  }
+
   ngOnInit(): void {
     this.cdr.detectChanges();
-     this.viewGamesSubscription    =        this.gameservice.getAllGames()
-    .subscribe({
+    this.viewGamesSubscription = this.gameservice.getAllGames().subscribe({
       next: (response) => {
         this.games = response;
-     
       },
     });
   }
 
-
-
-ngOnDestroy(): void {
-  this.viewGamesSubscription?.unsubscribe();
-}
-
-
-
+  ngOnDestroy(): void {
+    this.viewGamesSubscription?.unsubscribe();
+  }
 }
