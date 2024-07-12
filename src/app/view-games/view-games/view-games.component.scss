@@ -1,5 +1,5 @@
 .box {
-  width: 80%;
+  width: 85%;
 
   margin: 0 auto;
 }
@@ -26,8 +26,11 @@ tbody:hover img {
 tr {
   cursor: pointer;
 }
-.search{
+.search {
   width: 300px;
- 
+
   display: flex;
+}
+a {
+  cursor: pointer;
 }

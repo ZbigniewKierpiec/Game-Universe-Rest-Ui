@@ -27,11 +27,34 @@ export class GameService {
     );
   }
 
-  getAllGames(query?: string): Observable<Games[]> {
+  getAllGames(
+    query?: string,
+    sortBy?: string,
+    sortDirection?: string,
+    pageNumber?: number,
+    pageSize?: number
+  ): Observable<Games[]> {
     let params = new HttpParams();
     if (query) {
       params = params.set('query', query);
     }
+
+    if (sortBy) {
+      params = params.set('sortBy', sortBy);
+    }
+
+    if (sortDirection) {
+      params = params.set('sortDirection', sortDirection);
+    }
+
+    if (pageNumber) {
+      params = params.set('pageNumber', pageNumber);
+    }
+
+    if (pageSize) {
+      params = params.set('pageSize', pageSize);
+    }
+
     return this.http.get<Games[]>(`${environment.apiBaseUrl}/api/Games`, {
       params: params,
     });
@@ -39,6 +62,10 @@ export class GameService {
 
   getGameById(id: string): Observable<Games> {
     return this.http.get<Games>(`${environment.apiBaseUrl}/api/Games/${id}`);
+  }
+
+  getGameCount(): Observable<number> {
+    return this.http.get<number>(`${environment.apiBaseUrl}/api/Games/count`);
   }
 
   updateGame(
